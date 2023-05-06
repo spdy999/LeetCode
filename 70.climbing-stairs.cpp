@@ -5,7 +5,7 @@
  */
 
 // @lc code=start
-int memo[46];
+map<int, int> memo;
 
 class Solution
 {
@@ -35,7 +35,7 @@ public:
 
     int climbStairs(int n)
     {
-        // memoization(using array), Top-down
+        // memoization(using map), Top-down
         memo[1] = 1;
         memo[2] = 2;
         return fib(n);
