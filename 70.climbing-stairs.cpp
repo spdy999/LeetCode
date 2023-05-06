@@ -5,28 +5,40 @@
  */
 
 // @lc code=start
+int memo[46];
+
 class Solution
 {
 public:
-    int climbStairs(int n)
+    int fib(int n)
     {
-        // Bottom-Up Tabulation
-        map<int, int> memo;
-        memo[1] = 1;
-        memo[2] = 2;
-
         if (n == 1)
             return memo[1];
         if (n == 2)
             return memo[2];
 
-        int cal = 0;
-        for (int i = 3; i <= n; i++) // O(n)
+        if (memo[n] > 0)
         {
-            cal = memo[i - 1] + memo[i - 2];
-            memo[i] = cal;
+            // cout << "!!!Memo: " << memo[n] << endl;
+            return memo[n];
         }
-        return memo[n]; // O(1)
+
+        memo[n] = fib(n - 2) + fib(n - 1);
+        // for (int i = n; i > 0; i--)
+        // {
+        //     cout << "Memo " << i << ": " << memo[i] << " ";
+        // }
+        // cout << endl;
+
+        return memo[n];
+    }
+
+    int climbStairs(int n)
+    {
+        // memoization(using array), Top-down
+        memo[1] = 1;
+        memo[2] = 2;
+        return fib(n);
     }
 };
 // @lc code=end
