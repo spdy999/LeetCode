@@ -5,11 +5,10 @@
  */
 
 // @lc code=start
-map<int, int> memo;
-
 class Solution
 {
 public:
+    map<int, int> memo;
     int fib(int n)
     {
         if (n == 1)
